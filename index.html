@@ -36,8 +36,8 @@
             outline: none; /* Remove o contorno padrão */
         }
 
-        /* Remove o foco visível para qualquer elemento */
-        .top-img:focus, .top-img:focus-visible {
+        /* Remove o efeito de clique ao focar na imagem */
+        .top-img:focus {
             outline: none;
             box-shadow: none; /* Garante que nenhuma sombra seja aplicada */
         }
@@ -80,7 +80,7 @@
 
     <!-- Frase romântica sobrepondo as imagens -->
     <div class="romantic-text">
-        Te quero pra vida toda ❤️
+        Te quero pra vida toda.
     </div>
 
     <!-- Imagem romântica ocupando a tela inteira -->
@@ -103,21 +103,23 @@
 
         // Função para criar corações animados
         function createHeart(event) {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerText = '❤️';
+            for (let i = 0; i < 10; i++) { // Criar 10 corações a cada clique
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerText = '❤️';
 
-            // Define a posição inicial do coração
-            heart.style.left = `${event.clientX}px`;
-            heart.style.top = `${event.clientY}px`;
+                // Define a posição inicial do coração
+                heart.style.left = `${event.clientX + (Math.random() * 50 - 25)}px`;
+                heart.style.top = `${event.clientY + (Math.random() * 50 - 25)}px`;
 
-            // Adiciona o coração ao contêiner
-            heartContainer.appendChild(heart);
+                // Adiciona o coração ao contêiner
+                heartContainer.appendChild(heart);
 
-            // Remove o coração após a animação
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
+                // Remove o coração após a animação
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
         }
 
         // Adiciona o evento de clique à imagem
