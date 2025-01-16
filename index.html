@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha Página Romântica</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"> <!-- Link para a nova fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,27 +17,28 @@
         /* Estilo para a imagem que ocupa a tela inteira */
         .full-width-img {
             width: 100%;
-            height: 100vh; /* 100% da altura da tela */
-            object-fit: cover; /* Garante que a imagem ocupe toda a área sem distorcer */
+            height: 100vh;
+            object-fit: cover;
         }
 
         /* Estilo para a imagem que vai sobrepor */
         .top-img {
             position: absolute;
-            top: 25%; /* A imagem "namorados" ficará sobre os primeiros 25% da altura da imagem romântica */
+            top: 25%;
             left: 50%;
-            transform: translateX(-50%); /* Centraliza a imagem horizontalmente */
-            width: 200px; /* Definindo uma largura fixa para garantir o formato quadrado */
-            height: 200px; /* Altura igual à largura para formar um quadrado */
-            z-index: 1; /* Garante que a imagem "namorados" fique sobre a imagem romântica */
-            border-radius: 15px; /* Suaviza as bordas */
-            object-fit: cover; /* Garante que a imagem cubra totalmente o espaço da área */
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            z-index: 1;
+            border-radius: 15px;
+            object-fit: cover;
+            cursor: pointer; /* Aponta que a imagem é clicável */
         }
 
         /* Estilo para a frase de texto com a nova fonte */
         .romantic-text {
-            font-family: 'Dancing Script', cursive; /* Aplica a nova fonte */
-            font-size: 36px; /* Aumenta o tamanho da fonte para destacar */
+            font-family: 'Dancing Script', cursive;
+            font-size: 36px;
             font-weight: bold;
             color: #fff;
             position: absolute;
@@ -45,7 +46,26 @@
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
-            z-index: 2; /* Garante que o texto fique sobre as imagens */
+            z-index: 2;
+        }
+
+        /* Estilo para os corações animados */
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-300px) scale(1.5);
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -53,7 +73,7 @@
 
     <!-- Frase romântica sobrepondo as imagens -->
     <div class="romantic-text">
-        "Te quero pra vida toda❤️"
+        "Te quero pra vida toda ❤️"
     </div>
 
     <!-- Imagem romântica ocupando a tela inteira -->
@@ -63,8 +83,41 @@
 
     <!-- Imagem dos namorados, com bordas suavizadas -->
     <div>
-        <img src="imagens/nnamorados.jpg" alt="Imagem de Namorados" class="top-img">
+        <img src="imagens/namorados.jpg" alt="Imagem de Namorados" class="top-img" id="romanticImage">
     </div>
+
+    <!-- Contêiner para os corações -->
+    <div id="heartContainer"></div>
+
+    <script>
+        // Seleciona a imagem e o contêiner de corações
+        const romanticImage = document.getElementById('romanticImage');
+        const heartContainer = document.getElementById('heartContainer');
+
+        // Função para criar corações animados
+        function createHeart(event) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerText = '❤️';
+
+            // Define a posição inicial do coração
+            heart.style.left = `${event.clientX}px`;
+            heart.style.top = `${event.clientY}px`;
+
+            // Adiciona o coração ao contêiner
+            heartContainer.appendChild(heart);
+
+            // Remove o coração após a animação
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        // Adiciona o evento de clique à imagem
+        romanticImage.addEventListener('click', (event) => {
+            createHeart(event);
+        });
+    </script>
 
 </body>
 </html>
