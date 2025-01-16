@@ -20,7 +20,7 @@
             object-fit: cover; /* Garante que a imagem ocupe toda a área sem distorcer */
         }
 
-        /* Estilo para a imagem que vai sobrepor */
+        /* Estilo para a imagem que vai sobrepor com formato de coração */
         .top-img {
             position: absolute;
             top: 25%; /* A imagem "namorados" ficará sobre os primeiros 25% da altura da imagem romântica */
@@ -28,6 +28,7 @@
             transform: translateX(-50%); /* Centraliza a imagem horizontalmente */
             width: 60%; /* Ajuste o tamanho da imagem de namorados */
             z-index: 1; /* Garante que a imagem "namorados" fique sobre a imagem romântica */
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 75%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); /* Forma de coração */
         }
 
         /* Estilo para a frase de texto */
@@ -56,7 +57,7 @@
         <img src="imagens/romantico.jpg" alt="Imagem Romântica" class="full-width-img">
     </div>
 
-    <!-- Imagem dos namorados, sobrepondo a imagem romântica -->
+    <!-- Imagem dos namorados, com forma de coração -->
     <div>
         <img src="imagens/namorados.jpg" alt="Imagem de Namorados" class="top-img">
     </div>
