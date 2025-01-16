@@ -20,15 +20,17 @@
             object-fit: cover; /* Garante que a imagem ocupe toda a área sem distorcer */
         }
 
-        /* Estilo para a imagem que vai sobrepor com bordas arredondadas */
+        /* Estilo para a imagem que vai sobrepor */
         .top-img {
             position: absolute;
             top: 25%; /* A imagem "namorados" ficará sobre os primeiros 25% da altura da imagem romântica */
             left: 50%;
             transform: translateX(-50%); /* Centraliza a imagem horizontalmente */
-            width: 60%; /* Ajuste o tamanho da imagem de namorados */
+            width: 200px; /* Definindo uma largura fixa para garantir o formato quadrado */
+            height: 200px; /* Altura igual à largura para formar um quadrado */
             z-index: 1; /* Garante que a imagem "namorados" fique sobre a imagem romântica */
             border-radius: 50%; /* Torna a imagem redonda */
+            object-fit: cover; /* Garante que a imagem cubra totalmente o espaço da área */
         }
 
         /* Estilo para a frase de texto */
