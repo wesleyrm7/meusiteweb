@@ -101,18 +101,16 @@
         const romanticImage = document.getElementById('romanticImage');
         const heartContainer = document.getElementById('heartContainer');
 
-        // Função para criar múltiplos corações animados
-        function createHearts(event) {
-            for (let i = 0; i < 10; i++) { // Loop para criar 10 corações
+        // Função para criar corações animados
+        function createHeart(event) {
+            for (let i = 0; i < 10; i++) { // Criar 10 corações a cada clique
                 const heart = document.createElement('div');
                 heart.classList.add('heart');
                 heart.innerText = '❤️';
 
-                // Define uma posição inicial com deslocamento aleatório ao redor do clique
-                const offsetX = (Math.random() - 0.5) * 100; // Desloca entre -50 e +50 pixels no eixo X
-                const offsetY = (Math.random() - 0.5) * 100; // Desloca entre -50 e +50 pixels no eixo Y
-                heart.style.left = `${event.clientX + offsetX}px`;
-                heart.style.top = `${event.clientY + offsetY}px`;
+                // Define a posição inicial do coração
+                heart.style.left = `${event.clientX + (Math.random() * 50 - 25)}px`;
+                heart.style.top = `${event.clientY + (Math.random() * 50 - 25)}px`;
 
                 // Adiciona o coração ao contêiner
                 heartContainer.appendChild(heart);
@@ -126,7 +124,7 @@
 
         // Adiciona o evento de clique à imagem
         romanticImage.addEventListener('click', (event) => {
-            createHearts(event);
+            createHeart(event);
         });
     </script>
 
