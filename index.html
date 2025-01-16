@@ -33,6 +33,13 @@
             border-radius: 15px;
             object-fit: cover;
             cursor: pointer; /* Aponta que a imagem é clicável */
+            outline: none; /* Remove o contorno padrão */
+        }
+
+        /* Remove o efeito de clique ao focar na imagem */
+        .top-img:focus {
+            outline: none;
+            box-shadow: none; /* Garante que nenhuma sombra seja aplicada */
         }
 
         /* Estilo para a frase de texto com a nova fonte */
@@ -73,7 +80,7 @@
 
     <!-- Frase romântica sobrepondo as imagens -->
     <div class="romantic-text">
-        Te quero pra vida toda ❤️
+        Te quero pra vida toda!
     </div>
 
     <!-- Imagem romântica ocupando a tela inteira -->
@@ -94,28 +101,32 @@
         const romanticImage = document.getElementById('romanticImage');
         const heartContainer = document.getElementById('heartContainer');
 
-        // Função para criar corações animados
-        function createHeart(event) {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerText = '❤️';
+        // Função para criar múltiplos corações animados
+        function createHearts(event) {
+            for (let i = 0; i < 10; i++) { // Loop para criar 10 corações
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerText = '❤️';
 
-            // Define a posição inicial do coração
-            heart.style.left = `${event.clientX}px`;
-            heart.style.top = `${event.clientY}px`;
+                // Define uma posição inicial com deslocamento aleatório ao redor do clique
+                const offsetX = (Math.random() - 0.5) * 100; // Desloca entre -50 e +50 pixels no eixo X
+                const offsetY = (Math.random() - 0.5) * 100; // Desloca entre -50 e +50 pixels no eixo Y
+                heart.style.left = `${event.clientX + offsetX}px`;
+                heart.style.top = `${event.clientY + offsetY}px`;
 
-            // Adiciona o coração ao contêiner
-            heartContainer.appendChild(heart);
+                // Adiciona o coração ao contêiner
+                heartContainer.appendChild(heart);
 
-            // Remove o coração após a animação
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
+                // Remove o coração após a animação
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
         }
 
         // Adiciona o evento de clique à imagem
         romanticImage.addEventListener('click', (event) => {
-            createHeart(event);
+            createHearts(event);
         });
     </script>
 
