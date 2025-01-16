@@ -10,19 +10,24 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            overflow: hidden; /* Garante que não apareçam barras de rolagem */
         }
-        
-        /* Estilo da imagem que ocupa a tela inteira */
+
+        /* Estilo para a imagem que ocupa a tela inteira */
         .full-width-img {
             width: 100%;
             height: 100vh; /* 100% da altura da tela */
             object-fit: cover; /* Garante que a imagem ocupe toda a área sem distorcer */
         }
-        
-        /* Estilo para a imagem do topo, centralizada */
+
+        /* Estilo para a imagem que vai sobrepor */
         .top-img {
-            width: 300px;
-            margin-top: 30px;
+            position: absolute;
+            top: 25%; /* A imagem "namorados" ficará sobre os primeiros 25% da altura da imagem romântica */
+            left: 50%;
+            transform: translateX(-50%); /* Centraliza a imagem horizontalmente */
+            width: 60%; /* Ajuste o tamanho da imagem de namorados */
+            z-index: 1; /* Garante que a imagem "namorados" fique sobre a imagem romântica */
         }
 
         /* Estilo para a frase de texto */
@@ -31,26 +36,29 @@
             font-weight: bold;
             color: #fff;
             position: absolute;
-            top: 20px;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
             width: 100%;
+            z-index: 2; /* Garante que o texto fique sobre as imagens */
         }
     </style>
 </head>
 <body>
 
-    <!-- Frase romântica sobre a imagem do topo -->
+    <!-- Frase romântica sobrepondo as imagens -->
     <div class="romantic-text">
         "O amor é a chave que abre o coração."
     </div>
 
-    <!-- Primeira imagem (centralizada) -->
-    <div>
-        <img src="imagens/namorados.jpg" alt="Imagem de Namorados" class="top-img">
-    </div>
-
-    <!-- Segunda imagem (ocupando o espaço inteiro) -->
+    <!-- Imagem romântica ocupando a tela inteira -->
     <div>
         <img src="imagens/romantico.jpg" alt="Imagem Romântica" class="full-width-img">
+    </div>
+
+    <!-- Imagem dos namorados, sobrepondo a imagem romântica -->
+    <div>
+        <img src="imagens/namorados.jpg" alt="Imagem de Namorados" class="top-img">
     </div>
 
 </body>
